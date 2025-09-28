@@ -374,3 +374,360 @@ a.link-accent {
 /* ---------------------
    END — Premium stylesheet
    --------------------- */
+/* =========================
+   Mobile color/contrast fixes
+   (place at end of styles.css)
+   ========================= */
+
+@media (max-width: 720px) {
+  /* Make page backgrounds slightly more neutral / higher contrast */
+  body {
+    background: linear-gradient(180deg, var(--color-sand) 0%, #fbf9f5 100%);
+    color: var(--color-text);
+    font-size: 15.5px; /* slightly smaller but still readable */
+  }
+
+  /* Header: increase opacity so nav remains legible over images */
+  .header-surface {
+    background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.88));
+    border-bottom: 1px solid rgba(15,21,24,0.06);
+    box-shadow: 0 6px 18px rgba(8,15,20,0.06);
+    backdrop-filter: blur(6px);
+  }
+  .dark .header-surface {
+    background: linear-gradient(180deg, rgba(6,12,8,0.74), rgba(6,12,8,0.70));
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* Cards: increase BG opacity and border contrast */
+  .card-surface {
+    background: linear-gradient(180deg, rgba(255,255,255,1), rgba(250,249,247,1));
+    border: 1px solid rgba(15,21,24,0.08);
+    box-shadow: 0 8px 28px rgba(8,15,20,0.07);
+  }
+  .dark .card-surface {
+    background: linear-gradient(180deg, rgba(10,20,16,0.86), rgba(8,16,12,0.85));
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* Buttons: simplify gradient and use stronger text color for legibility */
+  .btn {
+    background: linear-gradient(90deg, var(--color-primary-2), var(--color-primary));
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(8,15,20,0.08);
+  }
+  .btn:focus, .btn:active { outline: none; box-shadow: 0 6px 20px rgba(8,15,20,0.12); }
+
+  /* Ghost / glass buttons: make outline clearer on mobile */
+  .btn-ghost {
+    border: 1px solid rgba(15,21,24,0.10);
+    background: rgba(255,255,255,0.94);
+  }
+  .dark .btn-ghost {
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(6,12,8,0.62);
+  }
+
+  /* Links: remove subtle background that may wash out text on tiny screens */
+  .nav-link,
+  a.link-accent {
+    color: var(--color-text);
+    background: transparent;
+  }
+  .nav-link::after { bottom: -4px; height: 2.5px; }
+
+  /* Gradient text: make fallback solid color on mobile for better readability */
+  .gradient-text {
+    -webkit-text-fill-color: unset;
+    background: none;
+    color: var(--color-text);
+    font-weight: 700;
+  }
+
+  /* Badges: increase contrast and reduce translucency */
+  .badge {
+    background: linear-gradient(90deg, rgba(26,163,92,0.18), rgba(212,175,55,0.12));
+    color: #05110a;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .dark .badge {
+    background: linear-gradient(90deg, rgba(26,163,92,0.08), rgba(212,175,55,0.05));
+    color: var(--color-text);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* Inputs: increase opacity and border color for accessibility */
+  .input {
+    background: #fff;
+    border: 1px solid rgba(15,21,24,0.12);
+    padding: 0.7rem 0.85rem;
+  }
+  .dark .input {
+    background: rgba(10,18,14,0.86);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .input:focus {
+    box-shadow: 0 8px 28px rgba(26,163,92,0.08);
+  }
+
+  /* Avatar: simplify border so it doesn't create low-contrast edges */
+  .author-avatar {
+    border: 2px solid rgba(255,255,255,0.92);
+    box-shadow: 0 8px 22px rgba(6,12,8,0.08);
+  }
+  .dark .author-avatar {
+    border: 2px solid rgba(255,255,255,0.06);
+  }
+
+  /* Strip overly-strong decorative overlays that reduce text contrast */
+  .card-accent::before {
+    filter: blur(16px);
+    opacity: 0.28;
+  }
+
+  /* Hero: ensure subtitle remains readable */
+  .hero .subtitle {
+    color: var(--color-muted);
+    background: rgba(255,255,255,0.0);
+    padding-right: 0;
+  }
+  .dark .hero .subtitle { color: var(--color-muted); }
+
+  /* Tooltip: make background slightly lighter on mobile for readability */
+  .tooltip .tooltip-text {
+    background: rgba(8,10,8,0.94);
+    color: #fff;
+    font-size: .85rem;
+  }
+
+  /* Focus ring: stronger contrast for keyboard/touch navigation */
+  .focus-outline:focus {
+    outline: 3px solid rgba(255,219,135,0.26);
+    outline-offset: 3px;
+  }
+}
+/* ===== Mobile menu fix (paste at end of styles.css) ===== */
+@media (max-width: 720px) {
+  /* Common container names: .mobile-menu, .mobile-nav, .menu-panel, .nav-overlay */
+  .mobile-menu,
+  .mobile-nav,
+  .menu-panel,
+  .nav-overlay {
+    position: fixed;
+    inset: 0;                       /* full screen */
+    z-index: 9999;                  /* top-most */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 1.25rem;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;          /* reduce blur that harms contrast on mobile */
+    transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 220ms;
+    transform: translateX(100%);    /* hidden by default (slide-in from right) */
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+
+  /* visible state */
+  .mobile-menu.open,
+  .mobile-nav.open,
+  .menu-panel.open,
+  .nav-overlay.open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* solid backdrop for contrast (light / dark aware) */
+  .mobile-menu .backdrop,
+  .mobile-nav .backdrop,
+  .menu-panel .backdrop,
+  .nav-overlay .backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(4,6,4,0.92);   /* dark fallback — better contrast over images */
+  }
+  .dark .mobile-menu .backdrop,
+  .dark .mobile-nav .backdrop,
+  .dark .menu-panel .backdrop,
+  .dark .nav-overlay .backdrop {
+    background: linear-gradient(180deg, rgba(4,6,6,0.95), rgba(6,8,8,0.95));
+  }
+  /* Light mode backdrop alternative (if .light or no .dark class present on root) */
+  :not(.dark) .mobile-menu .backdrop,
+  :not(.dark) .mobile-nav .backdrop,
+  :not(.dark) .menu-panel .backdrop,
+  :not(.dark) .nav-overlay .backdrop {
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,248,245,0.98));
+  }
+
+  /* Panel content layout */
+  .mobile-menu .panel,
+  .mobile-nav .panel,
+  .menu-panel .panel,
+  .nav-overlay .panel {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0.8rem;
+    padding-top: 0.25rem;
+  }
+
+  /* Brand/header row inside menu */
+  .mobile-menu .menu-header,
+  .mobile-nav .menu-header,
+  .menu-panel .menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  :not(.dark) .mobile-menu .menu-header,
+  :not(.dark) .mobile-nav .menu-header {
+    border-bottom-color: rgba(15,21,24,0.06);
+  }
+  .mobile-menu .menu-header .brand {
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: #fff;
+  }
+  :not(.dark) .mobile-menu .menu-header .brand { color: var(--color-text); }
+
+  /* Close button */
+  .menu-close {
+    width: 44px; height: 44px;
+    display: inline-grid; place-items: center;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    color: #fff;
+  }
+  :not(.dark) .menu-close {
+    background: rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.06);
+    color: var(--color-text);
+  }
+
+  /* nav list (single column) */
+  .mobile-menu .nav-list,
+  .mobile-nav .nav-list,
+  .menu-panel .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .mobile-menu .nav-item,
+  .mobile-nav .nav-item,
+  .menu-panel .nav-item {
+    width: 100%;
+  }
+
+  /* nav links: big, readable, and non-overlapping */
+  .mobile-menu .nav-link,
+  .mobile-nav .nav-link,
+  .menu-panel .nav-link {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 0.6rem;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: transparent;
+    text-decoration: none;
+  }
+  :not(.dark) .mobile-menu .nav-link,
+  :not(.dark) .mobile-nav .nav-link,
+  :not(.dark) .menu-panel .nav-link {
+    color: var(--color-text);
+  }
+
+  /* Subitems and meta text */
+  .mobile-menu .nav-meta,
+  .mobile-nav .nav-meta,
+  .menu-panel .nav-meta {
+    display:block;
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.75);
+    padding-left: 0.6rem;
+    margin-top: 0.12rem;
+  }
+  :not(.dark) .mobile-menu .nav-meta,
+  :not(.dark) .mobile-nav .nav-meta,
+  :not(.dark) .menu-panel .nav-meta {
+    color: var(--color-muted);
+  }
+
+  /* make sure headings inside panel (like "About Adkar") are not absolute or overlapping */
+  .mobile-menu h1,
+  .mobile-menu h2,
+  .mobile-nav h1,
+  .mobile-nav h2,
+  .menu-panel h1,
+  .menu-panel h2 {
+    margin: 0 0 0.35rem 0;
+    padding: 0;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  :not(.dark) .mobile-menu h1,
+  :not(.dark) .mobile-nav h1,
+  :not(.dark) .menu-panel h1 { color: var(--color-text); }
+
+  /* separators */
+  .mobile-menu .sep,
+  .mobile-nav .sep {
+    height: 1px;
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    margin: 0.6rem 0;
+  }
+  :not(.dark) .mobile-menu .sep,
+  :not(.dark) .mobile-nav .sep { background: rgba(15,21,24,0.06); }
+
+  /* footer links/socials inside menu */
+  .mobile-menu .menu-footer,
+  .mobile-nav .menu-footer {
+    margin-top: auto;  /* push to bottom */
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+    padding-top:0.8rem;
+  }
+  .mobile-menu .menu-footer a,
+  .mobile-nav .menu-footer a {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.88);
+  }
+  :not(.dark) .mobile-menu .menu-footer a { color: var(--color-text); }
+
+  /* Accessibility: focus states for keyboard users */
+  .mobile-menu .nav-link:focus,
+  .mobile-nav .nav-link:focus,
+  .menu-panel .nav-link:focus,
+  .menu-close:focus {
+    outline: 3px solid rgba(255,219,135,0.22);
+    outline-offset: 3px;
+  }
+
+  /* Prevent any underlying page from scrolling while menu open (JS toggles body.menu-open) */
+  body.menu-open {
+    overflow: hidden;
+    touch-action: none;
+    position: fixed;
+    width: 100%;
+  }
+}
