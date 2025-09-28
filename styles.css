@@ -1,0 +1,140 @@
+/* ===========================
+   Adkar — Shared Stylesheet
+   =========================== */
+
+/* Tailwind base utilities are included via CDN in each HTML file.
+   This stylesheet adds custom tokens, overrides, and extra utilities. */
+
+/* ---------------------------
+   Color Tokens
+--------------------------- */
+:root {
+  --color-primary: #0f5132;   /* Islamic green */
+  --color-primary-light: #198754;
+  --color-gold: #d4af37;
+  --color-sand: #fdfcf7;
+  --color-text: #1a1a1a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Backgrounds */
+.bg-sand {
+  background-color: var(--color-sand);
+}
+
+/* Typography */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+.font-serif {
+  font-family: 'Merriweather', Georgia, serif;
+}
+
+.font-arabic {
+  font-family: 'Amiri', serif;
+  font-size: 1.25rem;
+  line-height: 2rem;
+}
+
+/* Accessible focus outline */
+.focus-outline:focus {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Card surfaces */
+.card-surface {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+}
+.dark .card-surface {
+  background: #0b1a13;
+  border-color: #1e293b;
+}
+
+/* Header background */
+.header-surface {
+  background: #fff;
+}
+.dark .header-surface {
+  background: #08140e;
+}
+
+/* Verse block fade animation */
+.fade {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.fade.show {
+  opacity: 1;
+}
+
+/* Responsive images */
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Author avatar */
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+}
+
+/* Print styles */
+@media print {
+  .no-print,
+  header,
+  footer {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+}
+
+/* Dark mode */
+.dark body {
+  background-color: #07180f;
+  color: #f1f5f9;
+}
+
+/* Theme toggle button icons */
+#theme-toggle::before {
+  content: "☀️";
+  display: block;
+}
+.dark #theme-toggle::before {
+  content: "🌙";
+}
+
+/* Smooth animations (respects reduced motion) */
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

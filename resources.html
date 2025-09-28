@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resources — Adkar</title>
+  <meta name="description" content="Collections: daily adhkar, duas, recitation playlists, printable PDFs." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-sand text-primary-dark font-sans antialiased dark:bg-[#07180f] dark:text-slate-100">
+
+  <a class="sr-only focus:not-sr-only p-2 m-2 bg-white/90 dark:bg-black/80 rounded" href="#resources">Skip to resources</a>
+
+  <!-- START SHARED HEADER -->
+  <header class="sticky top-0 z-40 header-surface border-b">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="flex items-center gap-3" aria-label="Adkar home">
+          <div class="text-lg md:text-xl font-serif font-semibold">Adkar
+            <span class="block text-xs -mt-1 text-gray-600 dark:text-gray-300" style="font-family:Amiri, serif;">الأذكار</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-4" aria-label="Main Navigation">
+        <a href="index.html" class="px-3 py-2 rounded hover:bg-primary/10 focus-outline">Home</a>
+        <a href="blog.html" class="px-3 py-2 rounded hover:bg-primary/10 focus-outline">Blog</a>
+        <a href="resources.html" class="px-3 py-2 rounded hover:bg-primary/10 focus-outline">Resources</a>
+        <a href="about.html" class="px-3 py-2 rounded hover:bg-primary/10 focus-outline">About</a>
+        <a href="contact.html" class="px-3 py-2 rounded hover:bg-primary/10 focus-outline">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" class="p-2 rounded focus-outline" title="Toggle dark mode" aria-label="Toggle color theme"></button>
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded focus-outline" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile off-canvas -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 transform translate-x-full md:hidden" aria-hidden="true">
+      <div id="mobile-menu-backdrop" class="absolute inset-0 bg-black/40"></div>
+      <div class="relative w-80 max-w-full h-full bg-white dark:bg-[#05110b] p-6 border-l border-gray-200 dark:border-gray-800">
+        <button id="mobile-menu-close" class="absolute top-4 right-4 p-2 rounded focus-outline" aria-label="Close menu">&times;</button>
+
+        <nav class="mt-8 flex flex-col gap-3" aria-label="Mobile Navigation">
+          <a href="index.html" class="py-2 px-3 rounded hover:bg-primary/10 focus-outline">Home</a>
+          <a href="blog.html" class="py-2 px-3 rounded hover:bg-primary/10 focus-outline">Blog</a>
+          <a href="resources.html" class="py-2 px-3 rounded hover:bg-primary/10 focus-outline">Resources</a>
+          <a href="about.html" class="py-2 px-3 rounded hover:bg-primary/10 focus-outline">About</a>
+          <a href="contact.html" class="py-2 px-3 rounded hover:bg-primary/10 focus-outline">Contact</a>
+        </nav>
+
+        <div class="mt-6 border-t pt-4">
+          <a href="#" class="block text-sm">Instagram</a>
+          <a href="#" class="block text-sm">YouTube</a>
+          <a href="#" class="block text-sm">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- END SHARED HEADER -->
+
+  <main id="resources" class="max-w-6xl mx-auto p-6">
+    <header class="mb-6">
+      <h1 class="text-3xl font-serif">Resources</h1>
+      <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">Curated collections for daily practice and study. Files & playlists below are demo links.</p>
+    </header>
+
+    <!-- status live region for downloads/view actions -->
+    <div id="resource-status" class="sr-only" aria-live="polite" role="status"></div>
+
+    <section class="grid md:grid-cols-3 gap-6" aria-label="Resource cards">
+      <!-- Card: Daily Adhkar (PDF) -->
+      <div class="card-surface rounded-lg p-6 shadow">
+        <h3 class="font-semibold">Daily Adhkar</h3>
+        <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Short morning & evening adhkar you can print or save.</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <!-- View: opens preview modal, PDF expected -->
+          <button class="px-3 py-2 border rounded focus-outline resource-action"
+                  data-action="view"
+                  data-url="assets/pdfs/daily-adhkar.pdf"
+                  data-type="pdf"
+                  data-filename="daily-adhkar.pdf"
+                  aria-label="View Daily Adhkar PDF">View</button>
+
+          <!-- Download -->
+          <button class="px-3 py-2 border rounded focus-outline resource-action"
+                  data-action="download"
+                  data-url="assets/pdfs/daily-adhkar.pdf"
+                  data-type="pdf"
+                  data-filename="daily-adhkar.pdf"
+                  aria-label="Download Daily Adhkar PDF">Download PDF</button>
+        </div>
+      </div>
+
+      <!-- Card: Quran Recitation Playlists -->
+      <div class="card-surface rounded-lg p-6 shadow">
+        <h3 class="font-semibold">Quran Recitation Playlists</h3>
+        <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Curated recitations for focused listening.</p>
+        <div class="mt-4 flex gap-2">
+          <button class="px-3 py-2 border rounded focus-outline resource-action"
+                  data-action="playlist"
+                  data-url="https://youtube.com/playlist?list=EXAMPLE"
+                  aria-label="Open Quran Recitation playlist">Open playlist</button>
+        </div>
+      </div>
+
+      <!-- Card: Printable Cards ZIP -->
+      <div class="card-surface rounded-lg p-6 shadow">
+        <h3 class="font-semibold">Printable Cards</h3>
+        <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">High-res printable morning & evening cards.</p>
+        <div class="mt-4 flex gap-2">
+          <button class="px-3 py-2 border rounded focus-outline resource-action"
+                  data-action="download"
+                  data-url="assets/zips/adhkar-cards.zip"
+                  data-type="zip"
+                  data-filename="adhkar-cards.zip"
+                  aria-label="Download printable cards ZIP">Download ZIP</button>
+
+          <button class="px-3 py-2 border rounded focus-outline resource-action"
+                  data-action="view"
+                  data-url="assets/pdfs/sample-card-preview.pdf"
+                  data-type="pdf"
+                  data-filename="card-preview.pdf"
+                  aria-label="View sample card preview">Preview</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional resources list -->
+    <section class="mt-8">
+      <h2 class="text-2xl font-semibold mb-3">Useful PDFs</h2>
+      <ul class="space-y-4">
+        <li class="card-surface rounded-lg p-4 shadow flex justify-between items-center">
+          <div>
+            <div class="font-medium">Morning Adhkar — printable</div>
+            <div class="text-xs text-gray-500 mt-1">PDF • 2 pages</div>
+          </div>
+          <div class="flex gap-2">
+            <button class="px-3 py-1 border rounded focus-outline resource-action"
+                    data-action="view"
+                    data-url="assets/pdfs/morning-adhkar.pdf"
+                    data-type="pdf"
+                    data-filename="morning-adhkar.pdf"
+                    aria-label="View Morning Adhkar PDF">Preview</button>
+            <button class="px-3 py-1 border rounded focus-outline resource-action"
+                    data-action="download"
+                    data-url="assets/pdfs/morning-adhkar.pdf"
+                    data-type="pdf"
+                    data-filename="morning-adhkar.pdf"
+                    aria-label="Download Morning Adhkar PDF">Download</button>
+          </div>
+        </li>
+      </ul>
+    </section>
+   <section class="mt-8">
+  <h2 class="text-2xl font-semibold mb-3">Printable Cards (Sample)</h2>
+  <div class="grid md:grid-cols-3 gap-4">
+    <figure class="card-surface rounded-lg p-4 text-center">
+      <img src="assets/cards/morning-card-1.jpg" alt="Morning card" class="responsive-img rounded mb-3">
+      <figcaption class="text-sm text-gray-600 dark:text-gray-300">Morning Azkar — short card</figcaption>
+      <div class="mt-3 flex justify-center gap-2">
+        <!-- Download the single image (or PDF) -->
+        <button class="px-3 py-1 border rounded focus-outline resource-action"
+                data-action="download"
+                data-url="assets/cards/morning-card-1.jpg"
+                data-type="image"
+                data-filename="morning-azkar-card.jpg"
+                aria-label="Download Morning Azkar card">Download</button>
+
+        <!-- Optional: preview as image -->
+        <button class="px-3 py-1 border rounded focus-outline resource-action"
+                data-action="view"
+                data-url="assets/cards/morning-card-1.jpg"
+                data-type="image"
+                data-filename="morning-azkar-card.jpg"
+                aria-label="Preview Morning Azkar card">Preview</button>
+      </div>
+    </figure>
+
+    <figure class="card-surface rounded-lg p-4 text-center">
+      <img src="assets/cards/evening-card-1.jpg" alt="Evening card" class="responsive-img rounded mb-3">
+      <figcaption class="text-sm text-gray-600 dark:text-gray-300">Evening Azkar — short card</figcaption>
+      <div class="mt-3 flex justify-center gap-2">
+        <button class="px-3 py-1 border rounded focus-outline resource-action"
+                data-action="download"
+                data-url="assets/cards/evening-card-1.jpg"
+                data-type="image"
+                data-filename="evening-azkar-card.jpg"
+                aria-label="Download Evening Azkar card">Download</button>
+
+        <button class="px-3 py-1 border rounded focus-outline resource-action"
+                data-action="view"
+                data-url="assets/cards/evening-card-1.jpg"
+                data-type="image"
+                data-filename="evening-azkar-card.jpg"
+                aria-label="Preview Evening Azkar card">Preview</button>
+      </div>
+    </figure>
+
+    <figure class="card-surface rounded-lg p-4 text-center">
+      <img src="assets/cards/travel-card-1.jpg" alt="Travel card" class="responsive-img rounded mb-3">
+      <figcaption class="text-sm text-gray-600 dark:text-gray-300">Travel Duas — pocket card</figcaption>
+      <div class="mt-3 flex justify-center gap-2">
+        <button class="px-3 py-1 border rounded focus-outline resource-action"
+                data-action="download"
+                data-url="assets/cards/travel-card-1.jpg"
+                data-type="image"
+                data-filename="travel-duas-card.jpg"
+                aria-label="Download Travel Duas card">Download</button>
+
+        <button class="px-3 py-1 border rounded focus-outline resource-action"
+                data-action="view"
+                data-url="assets/cards/travel-card-1.jpg"
+                data-type="image"
+                data-filename="travel-duas-card.jpg"
+                aria-label="Preview Travel Duas card">Preview</button>
+      </div>
+    </figure>
+  </div>
+</section>
+
+  </main>
+
+  <!-- Resource Preview Modal (hidden by default) -->
+  <div id="resource-modal" class="fixed inset-0 z-60 hidden items-center justify-center p-4" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resource-modal-title">
+    <div id="resource-modal-backdrop" class="absolute inset-0 bg-black/60"></div>
+    <div class="relative max-w-4xl w-full bg-white dark:bg-[#071614] rounded-lg shadow-lg overflow-hidden z-10">
+      <div class="flex items-center justify-between p-4 border-b">
+        <h2 id="resource-modal-title" class="text-lg font-medium">Preview</h2>
+        <div class="flex items-center gap-2">
+          <a id="resource-download-btn" class="px-3 py-1 border rounded text-sm" href="#" download>Download</a>
+          <button id="resource-modal-close" class="px-3 py-1 rounded focus-outline" aria-label="Close preview">Close</button>
+        </div>
+      </div>
+
+      <div id="resource-modal-body" class="p-4 h-[70vh] overflow-auto">
+        <!-- Content injected here: iframe for PDFs or embed for HTML -->
+        <div id="resource-modal-content" class="h-full w-full"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="max-w-6xl mx-auto p-6 text-sm text-gray-600 dark:text-gray-400 border-t mt-8">
+    © Adkar 2025 • <a href="#" class="hover:underline">Privacy</a> • <a href="#" class="hover:underline">Sitemap</a>
+  </footer>
+
+  <!-- Shared app.js (updated) -->
+  <script src="app.js" defer></script>
+</body>
+</html>

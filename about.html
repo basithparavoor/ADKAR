@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Adkar</title>
+  <meta name="description" content="About Adkar — mission, values, and team." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-sand text-primary-dark font-sans antialiased dark:bg-[#07180f] dark:text-slate-100">
+
+  <a class="sr-only focus:not-sr-only p-2 m-2 bg-white/90 dark:bg-black/80 rounded" href="#main">Skip to main content</a>
+
+  <!-- START SHARED HEADER -->
+  <header class="sticky top-0 z-40 header-surface border-b">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="flex items-center gap-3" aria-label="Adkar home">
+          <div class="text-lg md:text-xl font-serif font-semibold">Adkar
+            <span class="block text-xs -mt-1 text-gray-600 dark:text-gray-300" style="font-family:Amiri, serif;">الأذكار</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-4" aria-label="Main Navigation">
+        <a href="index.html" class="px-3 py-2 rounded hover:bg-primary/10 focus-outline">Home</a>
+        <a href="blog.html" class="px-3 py-2 rounded hover:bg-primary/10 focus-outline">Blog</a>
+        <a href="resources.html" class="px-3 py-2 rounded hover:bg-primary/10 focus-outline">Resources</a>
+        <a href="about.html" class="px-3 py-2 rounded hover:bg-primary/10 focus-outline">About</a>
+        <a href="contact.html" class="px-3 py-2 rounded hover:bg-primary/10 focus-outline">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" class="p-2 rounded focus-outline" title="Toggle dark mode" aria-label="Toggle color theme"></button>
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded focus-outline" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile off-canvas -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 transform translate-x-full md:hidden" aria-hidden="true">
+      <div id="mobile-menu-backdrop" class="absolute inset-0 bg-black/40"></div>
+      <div class="relative w-80 max-w-full h-full bg-white dark:bg-[#05110b] p-6 border-l border-gray-200 dark:border-gray-800">
+        <button id="mobile-menu-close" class="absolute top-4 right-4 p-2 rounded focus-outline" aria-label="Close menu">&times;</button>
+
+        <nav class="mt-8 flex flex-col gap-3" aria-label="Mobile Navigation">
+          <a href="index.html" class="py-2 px-3 rounded hover:bg-primary/10 focus-outline">Home</a>
+          <a href="blog.html" class="py-2 px-3 rounded hover:bg-primary/10 focus-outline">Blog</a>
+          <a href="resources.html" class="py-2 px-3 rounded hover:bg-primary/10 focus-outline">Resources</a>
+          <a href="about.html" class="py-2 px-3 rounded hover:bg-primary/10 focus-outline">About</a>
+          <a href="contact.html" class="py-2 px-3 rounded hover:bg-primary/10 focus-outline">Contact</a>
+        </nav>
+
+        <div class="mt-6 border-t pt-4">
+          <a href="#" class="block text-sm">Instagram</a>
+          <a href="#" class="block text-sm">YouTube</a>
+          <a href="#" class="block text-sm">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- END SHARED HEADER -->
+
+  <main id="main" class="max-w-4xl mx-auto p-6">
+    <h1 class="text-3xl font-serif mb-6">About Adkar</h1>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold mb-3">Our Mission</h2>
+      <p class="text-gray-700 dark:text-gray-300">Adkar exists to help Muslims around the world remember Allah (SWT) in their daily lives. Through curated duas, reflections, and spiritual guidance, we aim to make remembrance accessible, beautiful, and practical for all ages.</p>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold mb-3">Our Values</h2>
+      <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Authenticity:</strong> Content grounded in Qur’an and Sunnah.</li>
+        <li><strong>Accessibility:</strong> Easy to read, listen, and practice anywhere.</li>
+        <li><strong>Excellence:</strong> A clean, premium digital experience reflecting Islamic beauty.</li>
+        <li><strong>Community:</strong> Empowering readers with tools for remembrance and reflection.</li>
+      </ul>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold mb-3">Our Team</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="card-surface rounded-lg shadow p-4">
+          <img src="https://picsum.photos/seed/team1/200" alt="Team member" class="author-avatar mb-3">
+          <h3 class="font-semibold">Imam Basith</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Founder, Islamic scholar, and writer. Passionate about spreading daily remembrance practices.</p>
+          <div class="mt-2 flex gap-3 text-sm">
+            <a href="#" class="hover:underline">Twitter</a>
+            <a href="#" class="hover:underline">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="card-surface rounded-lg shadow p-4">
+          <img src="https://picsum.photos/seed/team2/200" alt="Team member" class="author-avatar mb-3">
+          <h3 class="font-semibold">Aisha Kareem</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Content editor and designer, ensuring clarity and elegance in every published article.</p>
+          <div class="mt-2 flex gap-3 text-sm">
+            <a href="#" class="hover:underline">Instagram</a>
+            <a href="#" class="hover:underline">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-12 text-sm text-gray-600 dark:text-gray-400">
+      <div class="border-t pt-6 flex flex-col md:flex-row md:justify-between items-start md:items-center">
+        <div>© Adkar 2025 • <a href="#" class="hover:underline">Privacy</a> • <a href="#" class="hover:underline">Sitemap</a></div>
+        <div class="mt-3 md:mt-0">Made with care • <a href="#" class="hover:underline">Donate</a></div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
